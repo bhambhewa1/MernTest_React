@@ -1,6 +1,7 @@
 import { FETCH_ERROR, SET_WEATHER_DATA } from "../../action/actionCreator";
 
-const weather = (data = [], action) => {
+const weather = ( data = [], action ) => {
+
     switch(action.type){
         case SET_WEATHER_DATA:
             // console.log("Reducer called", action);
@@ -11,6 +12,7 @@ const weather = (data = [], action) => {
         default:
             return data;
     }
+
 }
 
 export default weather;

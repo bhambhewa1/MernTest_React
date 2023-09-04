@@ -11,6 +11,7 @@ export const getRequest = async (url, data) => {
           },
         });
         return res.data;
+        
       } catch (err) {
         // console.log(err.response.data)
         return err.response.data;

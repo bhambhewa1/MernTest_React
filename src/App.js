@@ -6,7 +6,7 @@ import { getWeatherInfo } from './redux/action';
 
 
 const App = ({ getWeatherInfo }) => {
-  const [searchValue, setSearchValue] = useState("Delhi,IN");
+  const [searchValue, setSearchValue] = useState("Delhi,IN");  // Initializing city name for input field 
   const [loader, setLoader] = useState(true);
   const data = useSelector((state) => state?.weather);
 
@@ -16,7 +16,7 @@ const App = ({ getWeatherInfo }) => {
     getWeatherInfo(searchValue);
   }
 
-  useEffect(() => {       // useEffect after refresh page useEffect call function only one time
+  useEffect(() => {       // useEffect after refresh page useEffect call function only one time to show data on page
     getWeatherInfo(searchValue);
   }, []);
 
@@ -28,6 +28,7 @@ const App = ({ getWeatherInfo }) => {
       setLoader(false);
     }
   }, [data]);
+
 
   return (
     <Box
@@ -54,7 +55,7 @@ const App = ({ getWeatherInfo }) => {
           variant="outlined"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          onKeyUp={(e) => e.which === 13 ? getWeatherInfor() : ""}
+          onKeyUp={(e) => e.which === 13 ? getWeatherInfor() : ""}  // press enter for fetching weather api result
           InputProps={{ style: { height: "40px" } }}
           style={{
             width: '60%',
@@ -82,7 +83,7 @@ const App = ({ getWeatherInfo }) => {
         </Button>
       </Box>
 
-      {/* API data show in Main component */}
+      {/* Weather API data show in Main component */}
       <Main loader={loader} />
 
     </Box>

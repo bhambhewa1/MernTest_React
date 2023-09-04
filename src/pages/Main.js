@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import Toastify from '../config/Toastify';
 
 const Main = ({ loader }) => {
-    const weatherData = useSelector((state) => state?.weather);
-    const weatherCurrent = weatherData[0]?.current;
-    const weatherLocation = weatherData[0]?.location;
+    const weatherData = useSelector((state) => state?.weather);   // fetching weather api result
+    const weatherCurrent = weatherData[0]?.current;       // api data for weather condition
+    const weatherLocation = weatherData[0]?.location;     // api data for place details or location name etc.
 
     return (
         <Box sx={style.outer} >
@@ -25,15 +25,14 @@ const Main = ({ loader }) => {
 
 
 
-            {!loader && weatherData[0]?.message &&
+            {!loader && weatherData[0]?.message &&           // Error handling for fetching api data then message comes from api
                 <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
                     <h1>No Record Found</h1>
                     <Toastify />
                 </Box>
             }
 
-
-            {!loader && !weatherData[0]?.message &&
+            {!loader && !weatherData[0]?.message &&      // API data is correct then display in respective field
                 <>
                     <Box sx={style.fifty}>
                         <Box sx={style.row}>
